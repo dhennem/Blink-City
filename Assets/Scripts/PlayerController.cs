@@ -76,11 +76,14 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		else if(currentState == PlayerState.FlyingCombat){
-			if(transform.position.x > 10.5f){
-				transform.position = new Vector2(-0.5f, transform.position.y);	
+			if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.15f){
+				GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
 			}
-			else if(transform.position.x < -0.5f){
-				transform.position = new Vector2(10.5f, transform.position.y);	
+			if(transform.position.x > 10f){
+				transform.position = new Vector2(-0f, transform.position.y);	
+			}
+			else if(transform.position.x < -0f){
+				transform.position = new Vector2(10f, transform.position.y);	
 			}
 			if(Input.GetKey(KeyCode.LeftArrow)){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(-2f*speedMultiplier, GetComponent<Rigidbody2D>().velocity.y); 
