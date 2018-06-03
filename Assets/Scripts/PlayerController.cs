@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour {
 			if(Input.GetKey(KeyCode.LeftArrow)){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(-2f*speedMultiplier, 0f); 
 				playerAnimator.SetBool("Walking", true);
+				facingLeft = true;
 			}
 			else if(Input.GetKey(KeyCode.RightArrow)){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(2f*speedMultiplier, 0f);
@@ -76,9 +77,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		else if(currentState == PlayerState.FlyingCombat){
-			if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.15f){
-				GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
-			}
+			
 			if(transform.position.x > 10f){
 				transform.position = new Vector2(-0f, transform.position.y);	
 			}
@@ -147,6 +146,8 @@ public class PlayerController : MonoBehaviour {
 			print("leaving level listing");
 		}
 	}
+
+
 
 	void HandleDoorwayEntrances(){
 		if(standingInDoorway && Input.GetKeyDown(KeyCode.UpArrow)){

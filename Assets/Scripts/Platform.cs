@@ -9,6 +9,9 @@ public class Platform : MonoBehaviour {
 	public float jumpVelocity;
 	public Platform platformPrefab; //used to spawn new platforms
 	public bool isInitialPlatform;
+	public Resource resource1Prefab;
+	public Resource resource2Prefab;
+	public Resource resource3Prefab;
 
 	private PlayerController player;
 	private Transform spawnPoint; //point at which new platforms are spawned
@@ -28,6 +31,9 @@ public class Platform : MonoBehaviour {
 				lastSpawnedPlatformPosition = spawnPointXPos;
 				platformsToSpawn -= 1;
 			}
+		}
+		else{
+			HandleResourceSpawns();
 		}
 		player = FindObjectOfType<PlayerController>();
 		//each spawn point has a random horizontal position but a static vertical distance from the current platform
@@ -61,5 +67,20 @@ public class Platform : MonoBehaviour {
 			//GetComponent<Rigidbody2D>().gravityScale = 0.03f;
 		}
 	}
+
+	void HandleResourceSpawns(){
+		float random = Random.Range(0,1000);
+		Transform resourceSpawnPoint = transform.GetChild(1);
+		if(random<35){
+			Instantiate(resource1Prefab, resourceSpawnPoint.position, Quaternion.identity);
+		}
+		else if(random<70){
+			Instantiate(resource2Prefab, resourceSpawnPoint.position, Quaternion.identity);
+		}
+		else if(random<105){
+			Instantiate(resource3Prefab, resourceSpawnPoint.position, Quaternion.identity);
+		}
+	}
+
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - highscoreMessage
   - levelListing
   - highScore
+  - Resource
   layers:
   - Default
   - TransparentFX

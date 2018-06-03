@@ -1785,11 +1785,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1152549685}
---- !u!1 &1165360575 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1578599657365758, guid: fbf32c83336424199a792857d39c6a97,
-    type: 2}
-  m_PrefabInternal: {fileID: 2055271837}
 --- !u!114 &1165360576 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114404198734409600, guid: fbf32c83336424199a792857d39c6a97,
@@ -2555,7 +2550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9430708120d43b38f900be45e5ce72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1165360575}
+  player: {fileID: 0}
+  followSmoothness: 0
 --- !u!1 &1374862299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,6 +3720,11 @@ Prefab:
       propertyPath: settingsMenu
       value: 
       objectReference: {fileID: 754019255}
+    - target: {fileID: 114404198734409600, guid: fbf32c83336424199a792857d39c6a97,
+        type: 2}
+      propertyPath: speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf32c83336424199a792857d39c6a97, type: 2}
   m_IsPrefabParent: 0

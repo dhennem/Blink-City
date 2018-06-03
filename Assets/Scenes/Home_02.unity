@@ -3094,6 +3094,11 @@ Prefab:
       propertyPath: levelListingMenu
       value: 
       objectReference: {fileID: 1424705604}
+    - target: {fileID: 114404198734409600, guid: fbf32c83336424199a792857d39c6a97,
+        type: 2}
+      propertyPath: speedMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf32c83336424199a792857d39c6a97, type: 2}
   m_IsPrefabParent: 0
