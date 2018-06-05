@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\NewHighScorePanel.cs" />
+     <Compile Include="Assets\NextLevelPanel.cs" />
      <Compile Include="Assets\Scripts\Bar.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
@@ -69,6 +71,7 @@
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefsManager.cs" />
+     <Compile Include="Assets\Scripts\Portal.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
      <Compile Include="Assets\Scripts\SettingsController.cs" />

@@ -163,6 +163,10 @@ MonoBehaviour:
     type: 2}
   flyingEnemyPrefab: {fileID: 114824883273473540, guid: cf7a014000c2541ce8892354ebdf8dfb,
     type: 2}
+  portalPlatformPrefab: {fileID: 114785715376581164, guid: 20a1d367291c74eb586d0302bbb94b31,
+    type: 2}
+  scoreKeeper: {fileID: 0}
+  winDetector: {fileID: 0}
 --- !u!212 &212601979270873536
 SpriteRenderer:
   m_ObjectHideFlags: 1

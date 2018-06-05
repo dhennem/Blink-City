@@ -25,8 +25,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void LoadLevel(string levelName){
-		Application.LoadLevel(levelName);
 		RefreshValuesBeforeNewLevel();
+		Application.LoadLevel(levelName);
 	}
 	public void QuitRequestl(){
 		Debug.Log("Quit requested");
@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour {
 		Application.LoadLevel(highestLevelReached);
 	}*/
 	private void Lose(){
+		RefreshValuesBeforeNewLevel();
 		//if(Application.loadedLevel > highestLevelReached) highestLevelReached = Application.loadedLevel;
 		LoadLevel("Lose");
 		//player.DeactivateSuperpower();
@@ -57,6 +58,7 @@ public class LevelManager : MonoBehaviour {
 
 	private void RefreshValuesBeforeNewLevel(){
 		FadeOut.nextLevelName = "";
+		Platform.winPortalSpawned = false;
 		//return static variables, etc to original values before loading a new level
 		/*player.shieldBar.resourceValue = player.shieldBar.GetMinValue();
 		player.healthBar.resourceValue = player.originalMaxHealth;

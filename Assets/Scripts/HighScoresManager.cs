@@ -24,17 +24,6 @@ public class HighScoresManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefsManager.SetLevel1HighScore(123);
-		PlayerPrefsManager.SetLevel1HighScorer("dennis");
-		/*
-		PlayerPrefsManager.SetLevel2HighScore(23);
-		PlayerPrefsManager.SetLevel2HighScorer("susie");
-		PlayerPrefsManager.SetLevel3HighScore(55);
-		PlayerPrefsManager.SetLevel3HighScorer("hannah");
-		PlayerPrefsManager.SetLevel4HighScore(17);
-		PlayerPrefsManager.SetLevel4HighScorer("george");
-		PlayerPrefsManager.SetLevel5HighScore(9);
-		PlayerPrefsManager.SetLevel5HighScorer("alexa");*/
 
 		level1HighScoreName = PlayerPrefsManager.getLevel1HighScorer();
 		level1HighScoreValue = PlayerPrefsManager.getLevel1HighScore();
