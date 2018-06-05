@@ -9,6 +9,9 @@ TagManager:
   - levelListing
   - highScore
   - Resource
+  - resourceBar3
+  - resourceBar2
+  - resourceBar1
   layers:
   - Default
   - TransparentFX
