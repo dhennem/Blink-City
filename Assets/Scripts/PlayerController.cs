@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	public enum PlayerState {OutOfCombat, FlyingCombat, GroundCombat};
+	public int maxHealth;
+	public int currentHealth;
 
 	private bool facingLeft;
 	private bool standingInDoorway;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private bool readingLevelListing;
 	private bool readingSettings;
 	private bool readingHelp;
+	private bool immuneToDamage;
 
 	public PlayerState currentState; //current state of player defined in inspector for each scene. This determines how the player is allowed to move/act
 
@@ -32,11 +35,15 @@ public class PlayerController : MonoBehaviour {
 
 	private Animator playerAnimator;
 	private LevelManager levelManager;
+	private HealthDisplay healthDisplay;
 
 	// Use this for initialization
 	void Start () {
 		playerAnimator = GetComponent<Animator>();
 		levelManager = FindObjectOfType<LevelManager>();
+		healthDisplay = FindObjectOfType<HealthDisplay>();
+		currentHealth = maxHealth;
+		if(!(currentState == PlayerController.PlayerState.OutOfCombat)) healthDisplay.UpdateHealthDisplay();
 		
 	}
 	
@@ -208,6 +215,38 @@ public class PlayerController : MonoBehaviour {
 		Vector3 currentScale = transform.localScale;
 		float amountToChange = (Time.deltaTime / duration) * (1 - newScale);
 		transform.localScale = new Vector3(currentScale.x - amountToChange, currentScale.y -amountToChange, currentScale.z);
+	}
+
+	public void TakeDamage(int damageValue){
+		if(!immuneToDamage){
+			if(currentHealth - damageValue < 1){
+				currentHealth = 0;
+				PlayerDeath();
+			}
+			else{
+				currentHealth -= damageValue;
+				GetComponent<Animator>().SetTrigger("TakingDamage");
+				print("taking damage");
+				print(currentHealth);
+			}
+			immuneToDamage = true;
+			Invoke("TurnOffDamageImmunity", 2f); //cannot take damage more than once every 2 seconds
+			healthDisplay.UpdateHealthDisplay();
+		}
+
+
+	}
+
+	void TurnOffDamageImmunity(){
+		immuneToDamage = false;
+	}
+
+	public void LifeHeartPickup(int lifeHeartValue){
+		currentHealth = Mathf.Min( currentHealth + lifeHeartValue, maxHealth);
+		healthDisplay.UpdateHealthDisplay();
+	}
+
+	void PlayerDeath(){
 	}
 
 }

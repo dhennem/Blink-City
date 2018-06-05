@@ -53,13 +53,16 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bar.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\FadeIn.cs" />
      <Compile Include="Assets\Scripts\FadeOut.cs" />
      <Compile Include="Assets\Scripts\GUIMessageManager.cs" />
+     <Compile Include="Assets\Scripts\HealthDisplay.cs" />
      <Compile Include="Assets\Scripts\HighScoresManager.cs" />
      <Compile Include="Assets\Scripts\InfiniteBackground.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\LevelUnlocker.cs" />
+     <Compile Include="Assets\Scripts\LifeHeart.cs" />
      <Compile Include="Assets\Scripts\LoseDetector.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\MusicPlayer.cs" />
@@ -67,7 +70,9 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefsManager.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
+     <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
      <Compile Include="Assets\Scripts\SettingsController.cs" />
+     <Compile Include="Assets\Scripts\WinDetector.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

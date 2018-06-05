@@ -12,11 +12,16 @@ public class Platform : MonoBehaviour {
 	public Resource resource1Prefab;
 	public Resource resource2Prefab;
 	public Resource resource3Prefab;
+	public LifeHeart lifeHeartPrefab;
+	public EnemyBehavior flyingEnemyPrefab;
+	public ScoreKeeper scoreKeeper;
 
 	private PlayerController player;
 	private Transform spawnPoint; //point at which new platforms are spawned
 	private bool spawnedNewPlatform = false;
+	private bool spawnedNewEnemy = false;
 	private int spawnPointXPos;
+	private bool gavePlayerScoreForJump; //only 1 score increase per platform
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +41,7 @@ public class Platform : MonoBehaviour {
 			HandleResourceSpawns();
 		}
 		player = FindObjectOfType<PlayerController>();
+		scoreKeeper = FindObjectOfType<ScoreKeeper>();
 		//each spawn point has a random horizontal position but a static vertical distance from the current platform
 		spawnPoint = transform.GetChild(0);
 		while(spawnPointXPos == lastSpawnedPlatformPosition || Mathf.Abs(spawnPointXPos-lastSpawnedPlatformPosition)>2f){ //ensures that no two consecutive platforms are at the same horizontal position and that consecutive platforms are not too far apart
@@ -52,8 +58,12 @@ public class Platform : MonoBehaviour {
 			spawnedNewPlatform = true;
 			lastSpawnedPlatformPosition = spawnPointXPos;
 		}
-		if(GetComponent<Rigidbody2D>().velocity.y > 0){
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+		if(!spawnedNewEnemy && player.transform.position.y > transform.position.y){
+			if(Random.Range(0,100) > 80){
+				Vector3 enemyPos = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + Random.Range(0,1), 0f);
+				Instantiate(flyingEnemyPrefab, enemyPos, Quaternion.identity);
+			}
+			spawnedNewEnemy = true;
 		}
 		
 	}
@@ -65,20 +75,28 @@ public class Platform : MonoBehaviour {
 			newPlayerVelocity.y = jumpVelocity;
 			playerRigidbody.velocity = newPlayerVelocity;
 			//GetComponent<Rigidbody2D>().gravityScale = 0.03f;
+			if(!gavePlayerScoreForJump){
+				scoreKeeper.score += 3;
+				gavePlayerScoreForJump = true;
+			}
 		}
 	}
 
 	void HandleResourceSpawns(){
 		float random = Random.Range(0,1000);
 		Transform resourceSpawnPoint = transform.GetChild(1);
-		if(random<35){
+		if(random<100){
 			Instantiate(resource1Prefab, resourceSpawnPoint.position, Quaternion.identity);
 		}
-		else if(random<70){
+		else if(random<200){
 			Instantiate(resource2Prefab, resourceSpawnPoint.position, Quaternion.identity);
 		}
-		else if(random<105){
+		else if(random<300){
 			Instantiate(resource3Prefab, resourceSpawnPoint.position, Quaternion.identity);
+		}
+		else if(random<325){
+			Instantiate(lifeHeartPrefab, this.transform);
+
 		}
 	}
 

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4751365016909308}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ResourceSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4335494559149034}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NextPlatformSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114886379926230034}
   - component: {fileID: 251279163156324744}
   - component: {fileID: 50315727524900644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,6 +159,10 @@ MonoBehaviour:
     type: 2}
   resource3Prefab: {fileID: 114942622965726816, guid: 10046d954f5224e8dafdc2bef915fea4,
     type: 2}
+  lifeHeartPrefab: {fileID: 114537479467311632, guid: 02a01336f67964c9aae1adefcf0c658f,
+    type: 2}
+  flyingEnemyPrefab: {fileID: 114824883273473540, guid: cf7a014000c2541ce8892354ebdf8dfb,
+    type: 2}
 --- !u!212 &212601979270873536
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -213,7 +217,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294961151
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

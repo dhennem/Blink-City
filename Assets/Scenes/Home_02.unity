@@ -384,6 +384,12 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &115549827 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114135834148924204, guid: 1dc9016f5af344452be8827c8dd420b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 2093795617}
+  m_Script: {fileID: 11500000, guid: fd1c1265593e745f6bce69525597dcd3, type: 3}
 --- !u!1001 &227958726
 Prefab:
   m_ObjectHideFlags: 0
@@ -1872,7 +1878,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1343335013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115549827}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level_01
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1424705601
@@ -3098,6 +3115,11 @@ Prefab:
         type: 2}
       propertyPath: speedMultiplier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114404198734409600, guid: fbf32c83336424199a792857d39c6a97,
+        type: 2}
+      propertyPath: currentState
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf32c83336424199a792857d39c6a97, type: 2}

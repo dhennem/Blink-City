@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GUIMessageManager : MonoBehaviour {
 
-	private bool displayingMessage;
+	public bool displayingMessage;
 	private string messageText;
 	public Color messageColor;
 	public bool blinkingMessage;
@@ -29,6 +29,7 @@ public class GUIMessageManager : MonoBehaviour {
 	}
 
 	public void displayNewMessage(string message){
+		print("trying to display new message");
 		displayingMessage = true;
 		messageText = message;
 	}
@@ -48,7 +49,8 @@ public class GUIMessageManager : MonoBehaviour {
 
 	void OnGUI(){
 		if(displayingMessage){
-			GUI.Label(new Rect(Screen.width/2 - 125/2, Screen.height/2 + 125, 125f, 25f), messageText, messageStyle);
+			print("ongui trying to display message");
+			GUI.Label(new Rect(Screen.width/2 - 125, Screen.height/2 + 125, 250f, 50f), messageText, messageStyle);
 		}
 	}
 }
