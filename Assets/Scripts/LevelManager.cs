@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour {
 	private void RefreshValuesBeforeNewLevel(){
 		FadeOut.nextLevelName = "";
 		Platform.winPortalSpawned = false;
+		Bar.OneBarDepleted = false;
 		//return static variables, etc to original values before loading a new level
 		/*player.shieldBar.resourceValue = player.shieldBar.GetMinValue();
 		player.healthBar.resourceValue = player.originalMaxHealth;

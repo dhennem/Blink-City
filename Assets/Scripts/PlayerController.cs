@@ -36,12 +36,14 @@ public class PlayerController : MonoBehaviour {
 	private Animator playerAnimator;
 	private LevelManager levelManager;
 	private HealthDisplay healthDisplay;
+	private LoseDetector loseDetector;
 
 	// Use this for initialization
 	void Start () {
 		playerAnimator = GetComponent<Animator>();
 		levelManager = FindObjectOfType<LevelManager>();
 		healthDisplay = FindObjectOfType<HealthDisplay>();
+		loseDetector = FindObjectOfType<LoseDetector>();
 		currentHealth = maxHealth;
 		if(!(currentState == PlayerController.PlayerState.OutOfCombat)) healthDisplay.UpdateHealthDisplay();
 		
@@ -221,6 +223,7 @@ public class PlayerController : MonoBehaviour {
 		if(!immuneToDamage){
 			if(currentHealth - damageValue < 1){
 				currentHealth = 0;
+				loseDetector.ShowLosePanel(LoseDetector.LoseReason.health);
 				PlayerDeath();
 			}
 			else{
@@ -247,6 +250,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void PlayerDeath(){
+		gameObject.SetActive(false);
 	}
 
 }

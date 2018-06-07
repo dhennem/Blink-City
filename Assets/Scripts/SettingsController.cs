@@ -11,6 +11,7 @@ public class SettingsController : MonoBehaviour {
 	public Image playerImage;
 	public Dropdown playerDropdown;
 	public LevelManager levelManager;
+	public Image resetWarning;
 
 	public Sprite[] playerImages; //used to store the sprites for each type of player
 
@@ -44,5 +45,30 @@ public class SettingsController : MonoBehaviour {
 		//set dropdown value to first player
 		playerImage.sprite = playerImages[0];
 
+	}
+
+	public void ShowResetWarning(){
+		resetWarning.gameObject.SetActive(true);
+	}
+
+	public void CloseResetWarning(){
+		resetWarning.gameObject.SetActive(false);
+	}
+
+	public void ResetScoresAndLevels(){
+		PlayerPrefsManager.SetLevel2Lock(0);
+		PlayerPrefsManager.SetLevel3Lock(0);
+		PlayerPrefsManager.SetLevel4Lock(0);
+		PlayerPrefsManager.SetLevel5Lock(0);
+		PlayerPrefsManager.SetLevel1HighScore(0);
+		PlayerPrefsManager.SetLevel2HighScore(0);
+		PlayerPrefsManager.SetLevel3HighScore(0);
+		PlayerPrefsManager.SetLevel4HighScore(0);
+		PlayerPrefsManager.SetLevel5HighScore(0);
+		PlayerPrefsManager.SetLevel1HighScorer("---");
+		PlayerPrefsManager.SetLevel2HighScorer("---");
+		PlayerPrefsManager.SetLevel3HighScorer("---");
+		PlayerPrefsManager.SetLevel4HighScorer("---");
+		PlayerPrefsManager.SetLevel5HighScorer("---");
 	}
 }
