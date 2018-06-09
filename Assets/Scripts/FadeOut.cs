@@ -15,16 +15,21 @@ public class FadeOut : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//gameObject.SetActive(false);
 		levelManager = FindObjectOfType<LevelManager>();
 		panel = GetComponent<Image>();
 		panelColor = Color.black;
 		panelColor.a = 0f;
+		transform.SetAsFirstSibling();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(fadingOut){
+			transform.SetAsLastSibling();
+			print("fading out");
+			gameObject.SetActive(true);
 			float panelAlphaChange = Mathf.Clamp(Time.deltaTime/fadeOutTime, 0f, 1f);
 			panelColor.a += panelAlphaChange;
 			panel.color = panelColor;
@@ -34,5 +39,9 @@ public class FadeOut : MonoBehaviour {
 			}
 		}
 		
+	}
+
+	public void fadeOut(){
+		fadingOut = true;
 	}
 }

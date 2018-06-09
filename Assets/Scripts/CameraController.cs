@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
 
 	public PlayerController player;
 	public float followSmoothness; //only used for FlyingCombat state
+	public PlayerSpawner playerSpawner;
 
 	private Vector3 offset;
 	private Vector3 currentVelocity;
@@ -15,9 +16,6 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = FindObjectOfType<PlayerController>();
-		offset = transform.position - player.transform.position;
-		
 	}
 	
 	// Update is called once per frame
@@ -31,6 +29,10 @@ public class CameraController : MonoBehaviour {
 
 				transform.position = new Vector3(cameraXPos, cameraYPos, cameraZPos);
 			}
+		}
+		else{
+			player = FindObjectOfType<PlayerController>();
+			offset = transform.position - player.transform.position;
 		}
 	}
 

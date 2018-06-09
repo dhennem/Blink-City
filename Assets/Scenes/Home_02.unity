@@ -221,7 +221,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 17466205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115549827}
+        m_MethodName: LoadLevelWithFadeOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level_04
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &65898824
@@ -259,7 +270,7 @@ RectTransform:
   - {fileID: 1691130666}
   - {fileID: 1325541203}
   m_Father: {fileID: 997233780}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -433,6 +444,11 @@ Prefab:
         type: 2}
       propertyPath: messageStyle.m_FontSize
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114034897463690974, guid: a4feaae915752453c87b7236bd50812b,
+        type: 2}
+      propertyPath: blinkingMessage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4feaae915752453c87b7236bd50812b, type: 2}
@@ -926,7 +942,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684810953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115549827}
+        m_MethodName: LoadLevelWithFadeOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level_03
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &719801834
@@ -1032,7 +1059,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 997233780}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1260,7 +1287,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 997233780}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1279,6 +1306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeInTime: 2
+  hasIntroSequence: 0
+  intro: {fileID: 0}
 --- !u!114 &925384921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1403,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 956786289}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115549827}
+        m_MethodName: LoadLevelWithFadeOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level_05
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &956786289
@@ -1514,10 +1554,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 925384919}
-  - {fileID: 766968193}
   - {fileID: 65898825}
   - {fileID: 1424705602}
+  - {fileID: 925384919}
+  - {fileID: 766968193}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1880,7 +1920,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115549827}
-        m_MethodName: LoadLevel
+        m_MethodName: LoadLevelWithFadeOut
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1927,7 +1967,7 @@ RectTransform:
   - {fileID: 17466204}
   - {fileID: 956786291}
   m_Father: {fileID: 997233780}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2575,7 +2615,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1676517404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115549827}
+        m_MethodName: LoadLevelWithFadeOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level_02
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1691130665
@@ -3163,6 +3214,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114135834148924204, guid: 1dc9016f5af344452be8827c8dd420b9,
+        type: 2}
+      propertyPath: fadeOut
+      value: 
+      objectReference: {fileID: 766968194}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dc9016f5af344452be8827c8dd420b9, type: 2}
   m_IsPrefabParent: 0

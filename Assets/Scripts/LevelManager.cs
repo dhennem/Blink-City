@@ -56,10 +56,17 @@ public class LevelManager : MonoBehaviour {
 		//player.DeactivateSuperpower();
 	}
 
+	public void LoadLevelWithFadeOut(string levelName){
+		FadeOut.nextLevelName = levelName;
+		FadeOut.fadingOut = true;
+		print("load level with fade out");
+	}
+
 	private void RefreshValuesBeforeNewLevel(){
 		FadeOut.nextLevelName = "";
 		Platform.winPortalSpawned = false;
-		Bar.OneBarDepleted = false;
+		LoseDetector.lost = false;
+		IntroSequenceManager.introFinished = false;
 		//return static variables, etc to original values before loading a new level
 		/*player.shieldBar.resourceValue = player.shieldBar.GetMinValue();
 		player.healthBar.resourceValue = player.originalMaxHealth;

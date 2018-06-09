@@ -45,7 +45,6 @@ public class Platform : MonoBehaviour {
 		else{
 			if(!winPortalSpawned) HandleResourceSpawns();
 		}
-		player = FindObjectOfType<PlayerController>();
 		scoreKeeper = FindObjectOfType<ScoreKeeper>();
 		winDetector = FindObjectOfType<WinDetector>();
 		camera = FindObjectOfType<CameraController>();
@@ -59,6 +58,7 @@ public class Platform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(player == null) player = FindObjectOfType<PlayerController>();
 		//when player goes above this platform, spawn a new one a distance above it
 		if(!spawnedNewPlatform && player.transform.position.y > transform.position.y && winDetector.numBarsFilled<3){
 			Instantiate(platformPrefab, spawnPoint.transform.position, Quaternion.identity);

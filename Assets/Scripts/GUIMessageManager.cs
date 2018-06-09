@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class GUIMessageManager : MonoBehaviour {
 
+	public enum MessageType {Default, IntroSequence};
+
+	public MessageType messageType;
+
 	public bool displayingMessage;
 	private string messageText;
 	public Color messageColor;
 	public bool blinkingMessage;
 
-	public GUIStyle messageStyle;
+	public GUIStyle Style1; //normal text
+	public GUIStyle Style2; //intro sequence text
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +27,8 @@ public class GUIMessageManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(displayingMessage) print("displaying message");
-		messageStyle.normal.textColor = messageColor;
+		Style1.normal.textColor = messageColor;
+		Style2.normal.textColor = messageColor;
 
 		
 	}
@@ -50,7 +55,12 @@ public class GUIMessageManager : MonoBehaviour {
 	void OnGUI(){
 		if(displayingMessage){
 			print("ongui trying to display message");
-			GUI.Label(new Rect(Screen.width/2 - 125, Screen.height/2 + 125, 250f, 50f), messageText, messageStyle);
+			if(messageType == GUIMessageManager.MessageType.Default){
+				GUI.Label(new Rect(Screen.width/2 - 125, Screen.height/2 + 125, 250f, 50f), messageText, Style1);
+			}
+			else if(messageType == GUIMessageManager.MessageType.IntroSequence){
+				GUI.Label(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200f, 200f), messageText, Style2);
+			}
 		}
 	}
 }

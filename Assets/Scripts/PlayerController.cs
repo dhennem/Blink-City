@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour {
 	private bool readingSettings;
 	private bool readingHelp;
 	private bool immuneToDamage;
+	private bool dead;
+	private Vector3 deathPosition;
+	private Vector3 startPosition;
+	private float deathSequenceDuration;
 
 	public PlayerState currentState; //current state of player defined in inspector for each scene. This determines how the player is allowed to move/act
 
@@ -45,14 +49,17 @@ public class PlayerController : MonoBehaviour {
 		healthDisplay = FindObjectOfType<HealthDisplay>();
 		loseDetector = FindObjectOfType<LoseDetector>();
 		currentHealth = maxHealth;
-		if(!(currentState == PlayerController.PlayerState.OutOfCombat)) healthDisplay.UpdateHealthDisplay();
+		startPosition = transform.position;
+
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		HandleMovement();
-		HandleTurning();
+		if ((!dead && IntroSequenceManager.introFinished) || currentState == PlayerController.PlayerState.OutOfCombat){
+			HandleMovement();
+			HandleTurning();
+		}
 		HandleDoorwayEntrances();
 		HandleHighScoreReads();
 		HandleLevelListingReads();
@@ -62,6 +69,15 @@ public class PlayerController : MonoBehaviour {
 		else{
 			print("not in doorway");
 		}*/
+		if(dead){
+			transform.position = deathPosition;
+			ShrinkPlayer(deathSequenceDuration, 0.5f);
+			RotatePlayer(deathSequenceDuration, 3.0f);
+		}
+		if(!IntroSequenceManager.introFinished && currentState == PlayerController.PlayerState.FlyingCombat){
+			transform.position = startPosition;
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
+		}
 		if(enteringDoorway){ //makes the player look like they're walking away because their scale shrinks
 			 ShrinkPlayer(3f, 0.7f);
 		}
@@ -219,12 +235,18 @@ public class PlayerController : MonoBehaviour {
 		transform.localScale = new Vector3(currentScale.x - amountToChange, currentScale.y -amountToChange, currentScale.z);
 	}
 
+	//rotates the player numSpins times in duration seconds
+	void RotatePlayer(float duration, float numSpins){
+		float amountToChange = (Time.deltaTime / duration) * (360 * numSpins);
+		Vector3 currentAngles = transform.eulerAngles;
+		transform.eulerAngles = new Vector3(currentAngles.x, currentAngles.y, currentAngles.z + amountToChange);
+	}
+
 	public void TakeDamage(int damageValue){
 		if(!immuneToDamage){
 			if(currentHealth - damageValue < 1){
 				currentHealth = 0;
-				loseDetector.ShowLosePanel(LoseDetector.LoseReason.health);
-				PlayerDeath();
+				PlayerDeath(3f);
 			}
 			else{
 				currentHealth -= damageValue;
@@ -249,8 +271,17 @@ public class PlayerController : MonoBehaviour {
 		healthDisplay.UpdateHealthDisplay();
 	}
 
-	void PlayerDeath(){
+	void PlayerDeath(float duration){
+		dead = true;
+		LoseDetector.lost = true;
+		deathPosition = transform.position;
+		deathSequenceDuration = duration;
+		Invoke("DeactivatePlayer", duration);
+	}
+
+	void DeactivatePlayer(){
 		gameObject.SetActive(false);
+		loseDetector.ShowLosePanel(LoseDetector.LoseReason.health);
 	}
 
 }

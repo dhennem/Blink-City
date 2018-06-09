@@ -7,13 +7,18 @@ public class FadeIn : MonoBehaviour {
 
 
 	public float fadeInTime;
+	public bool hasIntroSequence;
+	public IntroSequenceManager intro;
 
 	private Image panel;
 	private Color panelColor = Color.black;
 
+
 	// Use this for initialization
 	void Start () {
 		panel = GetComponent<Image>();
+		intro = FindObjectOfType<IntroSequenceManager>();
+		gameObject.SetActive(true);
 		
 	}
 	
@@ -25,6 +30,7 @@ public class FadeIn : MonoBehaviour {
 			panel.color = panelColor;
 		} else{
 			gameObject.SetActive(false);
+			if(hasIntroSequence) intro.BeginIntroSequence();
 		}
 		
 	}
