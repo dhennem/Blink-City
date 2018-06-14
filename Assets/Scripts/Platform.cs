@@ -19,6 +19,7 @@ public class Platform : MonoBehaviour {
 	public ScoreKeeper scoreKeeper;
 	public WinDetector winDetector;
 	public int platformScoreValue;
+	public AudioClip jumpingSound;
 
 	private PlayerController player;
 	private CameraController camera;
@@ -86,6 +87,7 @@ public class Platform : MonoBehaviour {
 			Vector2 newPlayerVelocity = playerRigidbody.velocity;
 			newPlayerVelocity.y = jumpVelocity;
 			playerRigidbody.velocity = newPlayerVelocity;
+			AudioSource.PlayClipAtPoint(jumpingSound, transform.position);
 			//GetComponent<Rigidbody2D>().gravityScale = 0.03f;
 			if(!gavePlayerScoreForJump){
 				scoreKeeper.score += platformScoreValue;

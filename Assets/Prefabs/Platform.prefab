@@ -53,7 +53,6 @@ GameObject:
   - component: {fileID: 68708730893496338}
   - component: {fileID: 114886379926230034}
   - component: {fileID: 251279163156324744}
-  - component: {fileID: 50315727524900644}
   m_Layer: 12
   m_Name: Platform
   m_TagString: Untagged
@@ -81,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964141906022164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24621248, y: -24.770918, z: 0}
+  m_LocalPosition: {x: 5, y: 2, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4335494559149034}
@@ -102,26 +101,6 @@ Transform:
   m_Father: {fileID: 4446110016836980}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50315727524900644
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964141906022164}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.05
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!68 &68708730893496338
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -134,7 +113,7 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.16}
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.95855784, y: -0.14774242}
@@ -168,6 +147,7 @@ MonoBehaviour:
   scoreKeeper: {fileID: 0}
   winDetector: {fileID: 0}
   platformScoreValue: 2
+  jumpingSound: {fileID: 8300000, guid: 7ae26b47fe57040bd86e22aa9ec303c2, type: 3}
 --- !u!212 &212601979270873536
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -202,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0da39d2849f554fcfaa6762e9e17cc53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50a6bb3be24db4a1cb6ba76595bc6ff0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -226,7 +206,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 120
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1

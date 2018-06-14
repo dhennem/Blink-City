@@ -130,6 +130,11 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   helpMenu: {fileID: 0}
   speedMultiplier: 1.5
+  playerExplosion: {fileID: 1828454762021936, guid: d24e860a21be2486fb28f5044df1f9f5,
+    type: 2}
+  loseSound: {fileID: 8300000, guid: 51f76849359c34dc0b88908cd3327960, type: 3}
+  playerExplosionSound: {fileID: 8300000, guid: a2371aa43d5914e009492e279eee0eaf,
+    type: 3}
 --- !u!212 &212944102030921838
 SpriteRenderer:
   m_ObjectHideFlags: 1

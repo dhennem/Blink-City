@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -9,18 +10,21 @@ public class LevelManager : MonoBehaviour {
 	public PlayerController player;
 	public static int highestLevelReached;
 	public float waitTimeBeforeLose;
+	public AudioClip levelEnterSound;
 
 	// Use this for initialization
 	void Start () {
 		if(isSplash){
 			LoadNextLevel();
 		}
-		player = FindObjectOfType<PlayerController>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(player==null){
+			player = FindObjectOfType<PlayerController>();	
+		}
 		
 	}
 
@@ -67,11 +71,15 @@ public class LevelManager : MonoBehaviour {
 		Platform.winPortalSpawned = false;
 		LoseDetector.lost = false;
 		IntroSequenceManager.introFinished = false;
-		//return static variables, etc to original values before loading a new level
-		/*player.shieldBar.resourceValue = player.shieldBar.GetMinValue();
-		player.healthBar.resourceValue = player.originalMaxHealth;
-		player.healthBar.ChangeMaxValue(player.originalMaxHealth);
-		player.DeactivateSuperpower();
-		*/
 	}
+
+	public void PlayEnterLevelSound(){
+		AudioSource.PlayClipAtPoint(levelEnterSound, player.transform.position);
+	}
+
+	public void ReloadWithFadeOut(){
+		FadeOut.nextLevelName = SceneManager.GetActiveScene().name;
+		FadeOut.fadingOut = true;
+	}
+
 }

@@ -34,7 +34,7 @@ public class HighScoresManager : MonoBehaviour {
 		level4HighScoreName = PlayerPrefsManager.getLevel4HighScorer();
 		level4HighScoreValue = PlayerPrefsManager.getLevel4HighScore();
 		level5HighScoreName = PlayerPrefsManager.getLevel5HighScorer();
-		level5HighScoreValue = PlayerPrefsManager.getLevel1HighScore();
+		level5HighScoreValue = PlayerPrefsManager.getLevel5HighScore();
 
 		level1HighScoreDisplay.text = "Level 1: " + level1HighScoreValue.ToString() + " (" + level1HighScoreName + ")";
 		level2HighScoreDisplay.text = "Level 2: " + level2HighScoreValue.ToString() + " (" + level2HighScoreName + ")";

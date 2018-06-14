@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour {
 	public Image settingsMenu;
 	public Image helpMenu;
 	public float speedMultiplier;
+	public GameObject playerExplosion;
+	public AudioClip loseSound;
+	public AudioClip playerExplosionSound;
 
 	private Animator playerAnimator;
 	private LevelManager levelManager;
@@ -276,12 +279,19 @@ public class PlayerController : MonoBehaviour {
 		LoseDetector.lost = true;
 		deathPosition = transform.position;
 		deathSequenceDuration = duration;
-		Invoke("DeactivatePlayer", duration);
+		AudioSource.PlayClipAtPoint(loseSound, transform.position);
+		Invoke("PlayerExplosion", duration);
+		Invoke("DeactivatePlayer", duration + 2f);
 	}
 
 	void DeactivatePlayer(){
-		gameObject.SetActive(false);
 		loseDetector.ShowLosePanel(LoseDetector.LoseReason.health);
+	}
+
+	void PlayerExplosion(){
+		Instantiate(playerExplosion, transform.position, Quaternion.identity);
+		AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position);
+		gameObject.SetActive(false);
 	}
 
 }
