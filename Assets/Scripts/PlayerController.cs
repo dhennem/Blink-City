@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 		levelManager = FindObjectOfType<LevelManager>();
 		healthDisplay = FindObjectOfType<HealthDisplay>();
 		loseDetector = FindObjectOfType<LoseDetector>();
+		messager = FindObjectOfType<GUIMessageManager>();
 		currentHealth = maxHealth;
 		startPosition = transform.position;
 
