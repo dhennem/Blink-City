@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour {
 	private LevelManager levelManager;
 	private HealthDisplay healthDisplay;
 	private LoseDetector loseDetector;
+	private PlayerSpawner playerSpawner;
 
 	// Use this for initialization
 	void Start () {
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 		healthDisplay = FindObjectOfType<HealthDisplay>();
 		loseDetector = FindObjectOfType<LoseDetector>();
 		messager = FindObjectOfType<GUIMessageManager>();
-		currentHealth = maxHealth;
+		playerSpawner = FindObjectOfType<PlayerSpawner>();
 		startPosition = transform.position;
 
 		
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if ((!dead && IntroSequenceManager.introFinished) || currentState == PlayerController.PlayerState.OutOfCombat){
 			HandleMovement();
 			HandleTurning();

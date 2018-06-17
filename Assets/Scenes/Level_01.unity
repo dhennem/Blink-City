@@ -352,7 +352,7 @@ Prefab:
     - target: {fileID: 114947249448733252, guid: 742ab4e71520e49049566fba5672f1fb,
         type: 2}
       propertyPath: percentDecreaseRate
-      value: -2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114947249448733252, guid: 742ab4e71520e49049566fba5672f1fb,
         type: 2}
@@ -584,6 +584,11 @@ Prefab:
         type: 2}
       propertyPath: scaleMultiplier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712806162836130, guid: 47240e859bbaf477896e11f3bc7af648,
+        type: 2}
+      propertyPath: maxHealth
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47240e859bbaf477896e11f3bc7af648, type: 2}
@@ -1300,7 +1305,7 @@ Prefab:
     - target: {fileID: 114000415517405734, guid: c2294a74e637f4cd4a18499c0e8eb2eb,
         type: 2}
       propertyPath: percentDecreaseRate
-      value: -2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114000415517405734, guid: c2294a74e637f4cd4a18499c0e8eb2eb,
         type: 2}
@@ -1466,7 +1471,7 @@ Prefab:
     - target: {fileID: 114087038796835124, guid: 3825c64cf1cc84f438b6551b853ec87a,
         type: 2}
       propertyPath: percentDecreaseRate
-      value: -2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114087038796835124, guid: 3825c64cf1cc84f438b6551b853ec87a,
         type: 2}
