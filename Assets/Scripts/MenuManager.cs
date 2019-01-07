@@ -8,14 +8,15 @@ public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = FindObjectOfType<PlayerController>();
 		gameObject.SetActive(false);
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if(player==null){
+            player = FindObjectOfType<PlayerController>();
+        }
 	}
 
 	public void viewMenu(){

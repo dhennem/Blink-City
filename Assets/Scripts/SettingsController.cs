@@ -19,7 +19,6 @@ public class SettingsController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
 		playerImage.sprite = playerImages[PlayerPrefsManager.GetPlayerType()];
 		volumeSlider.value = PlayerPrefsManager.GetMasterVolume();
 		playerDropdown.value = PlayerPrefsManager.GetPlayerType();
@@ -29,7 +28,10 @@ public class SettingsController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//musicPlayer.SetVolume(volumeSlider.value)
+        if(musicPlayer == null){
+            musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
+        }
+		musicPlayer.SetVolume(volumeSlider.value*0.1f);
 		playerImage.sprite = playerImages[playerDropdown.value];
 	}
 

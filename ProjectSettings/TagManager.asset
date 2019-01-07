@@ -12,6 +12,7 @@ TagManager:
   - resourceBar3
   - resourceBar2
   - resourceBar1
+  - Platform
   layers:
   - Default
   - TransparentFX

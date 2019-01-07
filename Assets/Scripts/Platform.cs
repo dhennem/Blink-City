@@ -83,10 +83,7 @@ public class Platform : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 		if(collision.relativeVelocity.y <= 0f && collision.collider.tag == "Player"){ //only bounce player up if they are coming from above
-			Rigidbody2D playerRigidbody = collision.collider.GetComponent<Rigidbody2D>();
-			Vector2 newPlayerVelocity = playerRigidbody.velocity;
-			newPlayerVelocity.y = jumpVelocity;
-			playerRigidbody.velocity = newPlayerVelocity;
+			//JumpPlayer(collision.collider.GetComponent<Rigidbody2D>());
 			AudioSource.PlayClipAtPoint(jumpingSound, transform.position);
 			//GetComponent<Rigidbody2D>().gravityScale = 0.03f;
 			if(!gavePlayerScoreForJump){
@@ -123,6 +120,13 @@ public class Platform : MonoBehaviour {
 			Instantiate(platformPrefab, new Vector3(5f, camera.transform.position.y + 8.5f + (float)numPlatformsToSpawn, 0f), Quaternion.identity);
 			numPlatformsToSpawn -= 1; 
 		}
+	}
+
+	public void JumpPlayer(Rigidbody2D playerRigidBody){
+		Rigidbody2D playerRigidbody = playerRigidBody;
+		Vector2 newPlayerVelocity = playerRigidbody.velocity;
+		newPlayerVelocity.y = jumpVelocity;
+		playerRigidbody.velocity = newPlayerVelocity;
 	}
 
 

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1901322221968196}
+  m_IsPrefabParent: 1
+--- !u!1 &1901322221968196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4439866198396734}
+  - component: {fileID: 114712806162836130}
+  m_Layer: 0
+  m_Name: PlayerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4439866198396734
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901322221968196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114712806162836130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901322221968196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0622b76146440a6971b9e0add5f104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intro: {fileID: 0}
+  player1Prefab: {fileID: 114404198734409600, guid: fbf32c83336424199a792857d39c6a97,
+    type: 2}
+  player2Prefab: {fileID: 114404198734409600, guid: d98b0db7929e143138d4f9f8eddafcf8,
+    type: 2}
+  player3Prefab: {fileID: 114404198734409600, guid: 768c59d2f383f4a13a45d9113ee3962b,
+    type: 2}
+  player4Prefab: {fileID: 114404198734409600, guid: 2be14509e1103412f9d110be60c05f27,
+    type: 2}
+  player5Prefab: {fileID: 114404198734409600, guid: 12ce05b01dc7c41188bfffdc275d9654,
+    type: 2}
+  levelThatDoorwayLeadsTo: 
+  doorwayMessage: 
+  highScoreMessage: 
+  levelListingMessage: 
+  highScoreMenu: {fileID: 0}
+  levelListingMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  helpMenu: {fileID: 0}
+  speedMultiplier: 0
+  currentState: 0
+  spawnedPlayer: 0
+  updatedPlayerValues: 0

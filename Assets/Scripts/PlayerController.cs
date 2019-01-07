@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public enum PlayerState {OutOfCombat, FlyingCombat, GroundCombat};
 	public int maxHealth;
 	public int currentHealth;
+	public float jumpVelocity;
 
 	private bool facingLeft;
 	private bool standingInDoorway;
@@ -25,6 +26,9 @@ public class PlayerController : MonoBehaviour {
 	private float deathSequenceDuration;
 
 	public PlayerState currentState; //current state of player defined in inspector for each scene. This determines how the player is allowed to move/act
+	public Transform[] groundPoints;
+	public float groundRadius;
+	public LayerMask whatIsGround;
 
 	public GUIMessageManager messager; //handles creating and deleting UI messages
 	public string doorwayMessage; //message displayed when player stands in a doorway
@@ -86,6 +90,12 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(enteringDoorway){ //makes the player look like they're walking away because their scale shrinks
 			 ShrinkPlayer(3f, 0.7f);
+		}
+		if(DetermineIfGrounded() && currentState == PlayerState.FlyingCombat){
+			Rigidbody2D playerRigidbody = GetComponent<Rigidbody2D>();
+			Vector2 newPlayerVelocity = playerRigidbody.velocity;
+			newPlayerVelocity.y = jumpVelocity;
+			playerRigidbody.velocity = newPlayerVelocity;
 		}
 		
 	}
@@ -160,6 +170,7 @@ public class PlayerController : MonoBehaviour {
 			print("entering level listing");
 		}
 	}
+
 	void OnCollisionExit2D(Collision2D collision){
 		if(collision.collider.tag == "doorway"){
 			standingInDoorway = false;
@@ -295,6 +306,21 @@ public class PlayerController : MonoBehaviour {
 		Instantiate(playerExplosion, transform.position, Quaternion.identity);
 		AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position);
 		gameObject.SetActive(false);
+	}
+
+	//determines whether the player is currently grounded (touching the ground or a platform)
+	bool DetermineIfGrounded(){
+		if(GetComponent<Rigidbody2D>().velocity.y <= 0f){
+			foreach(Transform groundPoint in groundPoints){
+				Collider2D[] colliders = Physics2D.OverlapCircleAll(groundPoint.position, groundRadius, whatIsGround);
+				for(int i = 0; i < colliders.Length; i++){
+					if(colliders[i].gameObject != gameObject){ //if one of the ground points is colliding with something other than the player, then the player is grounded
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 }
